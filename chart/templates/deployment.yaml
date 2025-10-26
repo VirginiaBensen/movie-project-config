@@ -44,6 +44,11 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
+          env:
+            - name: SQLALCHEMY_DATABASE_URI
+              value: "postgresql://postgres:1509@{{ .Release.Name }}-postgresql.default.svc.cluster.local/movie_db"
+            - name: SECRET_KEY
+              value: "some-other-secret-key-for-flask"
           {{- with .Values.livenessProbe }}
           livenessProbe:
             {{- toYaml . | nindent 12 }}
