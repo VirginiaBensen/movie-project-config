@@ -44,3 +44,7 @@ postgresql:
     database: "movie_db"
     username: "Vir"
     password: "1509" 
+
+serviceAccount:
+  create: false
+  name: ""
