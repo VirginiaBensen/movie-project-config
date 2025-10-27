@@ -1,14 +1,11 @@
 replicaCount: 2
-
 image:
   repository: YOUR_ECR_REPOSITORY_URI
   pullPolicy: IfNotPresent
-  tag: ""
-
+  tag: "bf1935c"
 service:
   type: ClusterIP
   port: 80
-
 ingress:
   enabled: true
   className: "nginx"
@@ -22,29 +19,25 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - movies.your-awesome-domain.com
-
 resources:
   limits:
-    cpu: 200m     
-    memory: 256Mi 
+    cpu: 200m
+    memory: 256Mi
   requests:
-    cpu: 100m     
-    memory: 128Mi 
-
+    cpu: 100m
+    memory: 128Mi
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
-
 postgresql:
   global:
-    storageClass: "gp2" 
+    storageClass: "gp2"
   auth:
     database: "movie_db"
     username: "Vir"
-    password: "1509" 
-
+    password: "1509"
 serviceAccount:
   create: false
   name: ""
