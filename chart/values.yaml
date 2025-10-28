@@ -1,9 +1,9 @@
 replicaCount: 2
 
 image:
-  repository: YOUR_ECR_REPOSITORY_URI
+  repository: 902275209269.dkr.ecr.us-east-1.amazonaws.com/movie-watchlist-backend
   pullPolicy: IfNotPresent
-  tag: ""
+  tag: "bf1935c"
 
 service:
   type: ClusterIP
