@@ -2,7 +2,7 @@ rreplicaCount: 2
 image:
   repository: 902275209269.dkr.ecr.us-east-1.amazonaws.com/movie-watchlist-backend
   pullPolicy: IfNotPresent
-  tag: "bf1935c" 
+  tag: "474cbef"
 service:
   type: ClusterIP
   port: 80
