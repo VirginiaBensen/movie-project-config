@@ -1,8 +1,8 @@
-replicaCount: 2
+rreplicaCount: 2
 image:
   repository: 902275209269.dkr.ecr.us-east-1.amazonaws.com/movie-watchlist-backend
   pullPolicy: IfNotPresent
-  tag: "bf1935c"
+  tag: "bf1935c" 
 service:
   type: ClusterIP
   port: 80
@@ -11,7 +11,7 @@ ingress:
   className: "nginx"
   annotations: {}
   hosts:
-    - host: movies.your-awesome-domain.com # <-- ייש לעדכן עתידית
+    - host: movies.your-awesome-domain.com 
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -36,8 +36,14 @@ postgresql:
     storageClass: "gp2"
   auth:
     database: "movie_db"
-    username: "Vir"
-    password: "1509"
+    username: "postgres" 
+    password: "1509"     
+
+  image:
+    registry: docker.io          
+    repository: bitnami/postgresql 
+    tag: "15.7.0-debian-12-r1" 
+
 serviceAccount:
   create: false
   name: ""
