@@ -25,7 +25,7 @@ spec:
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
+        {{- toYaml . . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "chart.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
@@ -44,17 +44,23 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
-
+          
           env:
             - name: PG_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: movie-watchlist-postgresql
-                  key: password
+                  key: postgres-password
             - name: SQLALCHEMY_DATABASE_URI
-              value: "postgresql://movie_user:$(PG_PASSWORD)@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
+              value: "postgresql://postgres:$(PG_PASSWORD)@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
             - name: SECRET_KEY
               value: "some-other-secret-key-for-flask"
+            
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: openai-api-key
+                  key: OPENAI_API_KEY
 
           {{- with .Values.livenessProbe }}
           livenessProbe:
