@@ -44,7 +44,7 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
-          
+
           env:
             - name: PG_PASSWORD
               valueFrom:
@@ -53,14 +53,15 @@ spec:
                   key: password
             - name: SQLALCHEMY_DATABASE_URI
               value: "postgresql://movie_user:$(PG_PASSWORD)@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
-            
+
             - name: SECRET_KEY
               value: "some-other-secret-key-for-flask"
-            - name: OPENAI_API_KEY
+
+            - name: GEMINI_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: openai-api-key
-                  key: OPENAI_API_KEY
+                  name: gemini-api-key
+                  key: GEMINI_API_KEY
 
           {{- with .Values.livenessProbe }}
           livenessProbe:
