@@ -2,7 +2,7 @@ replicaCount: 2
 image:
   repository: 902275209269.dkr.ecr.us-east-1.amazonaws.com/movie-watchlist-backend
   pullPolicy: IfNotPresent
-  tag: "5b03f15" 
+  tag: "c0fd413"
 service:
   type: ClusterIP
   port: 80
@@ -38,12 +38,10 @@ postgresql:
     database: "movie_db"
     username: "postgres"
     password: "1509"
-
   image:
     registry: docker.io
     repository: bitnami/postgresql
     tag: "latest"
-
 serviceAccount:
   create: false
   name: ""
