@@ -44,11 +44,18 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
+          
           env:
+            - name: PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: movie-watchlist-postgresql
+                  key: postgres-password
             - name: SQLALCHEMY_DATABASE_URI
-              value: "postgresql://postgres:1509@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
+              value: "postgresql://postgres:$(PG_PASSWORD)@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
             - name: SECRET_KEY
               value: "some-other-secret-key-for-flask"
+
           {{- with .Values.livenessProbe }}
           livenessProbe:
             {{- toYaml . | nindent 12 }}
