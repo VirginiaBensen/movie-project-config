@@ -37,7 +37,7 @@ postgresql:
     storageClass: "gp2"
   auth:
     database: "movie_db"
-    username: "postgres"
+    username: "movie_user"
     password: "1509"
   image:
     registry: docker.io
