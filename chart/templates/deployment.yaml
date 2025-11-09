@@ -20,7 +20,7 @@ spec:
       labels:
         {{- include "chart.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
-        {{- toYaml . . | nindent 8 }}
+        {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -44,15 +44,15 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
-          
+
           env:
             - name: PG_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: movie-watchlist-postgresql
-                  key: postgres-password
+                  key: password
             - name: SQLALCHEMY_DATABASE_URI
-              value: "postgresql://postgres:$(PG_PASSWORD)@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
+              value: "postgresql://movie_user:$(PG_PASSWORD)@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
             - name: SECRET_KEY
               value: "some-other-secret-key-for-flask"
 
