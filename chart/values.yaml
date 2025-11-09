@@ -2,11 +2,9 @@ replicaCount: 2
 image:
   repository: 902275209269.dkr.ecr.us-east-1.amazonaws.com/movie-watchlist-backend
   pullPolicy: IfNotPresent
-  tag: "33d8c6b"
-
+  tag: "516b0a6"
 env:
   SQLALCHEMY_DATABASE_URI: "postgresql://postgres:1509@movie-watchlist-postgresql/movie_db"
-
 service:
   type: ClusterIP
   port: 80
@@ -45,8 +43,7 @@ postgresql:
   image:
     registry: docker.io
     repository: bitnami/postgresql
-    tag: "latest"  
-
+    tag: "latest"
 serviceAccount:
   create: false
   name: ""
