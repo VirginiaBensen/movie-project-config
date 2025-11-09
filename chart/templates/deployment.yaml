@@ -46,7 +46,7 @@ spec:
               protocol: TCP
           env:
             - name: SQLALCHEMY_DATABASE_URI
-              value: "postgresql://postgres:1509@{{ .Release.Name }}-postgresql.default.svc.cluster.local/movie_db"
+              value: "postgresql://postgres:1509@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
             - name: SECRET_KEY
               value: "some-other-secret-key-for-flask"
           {{- with .Values.livenessProbe }}
