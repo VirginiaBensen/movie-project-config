@@ -5,7 +5,7 @@ image:
   tag: "33d8c6b"
 
 env:
-  SQLALCHEMY_DATABASE_URI: "postgresql://postgres:1509@movie-watchlist-postgresql/movie_db"
+  SQLALCHEMY_DATABASE_URI: "postgresql://postgres:1509@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
 
 service:
   type: ClusterIP
