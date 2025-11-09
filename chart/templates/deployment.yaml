@@ -50,7 +50,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: movie-watchlist-postgresql
-                  key: postgres-password
+                  key: password
             - name: SQLALCHEMY_DATABASE_URI
               value: "postgresql://postgres:$(PG_PASSWORD)@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
             - name: SECRET_KEY
