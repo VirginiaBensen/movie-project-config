@@ -2,7 +2,7 @@ replicaCount: 2
 image:
   repository: 902275209269.dkr.ecr.us-east-1.amazonaws.com/movie-watchlist-backend
   pullPolicy: IfNotPresent
-  tag: "516b0a6"
+  tag: "fae0d1d"
 
 env:
   SQLALCHEMY_DATABASE_URI: "postgresql://postgres:1509@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
