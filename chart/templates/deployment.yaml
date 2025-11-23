@@ -46,15 +46,9 @@ spec:
               protocol: TCP
 
           env:
-            - name: PG_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Release.Name }}-postgresql 
-                  key: postgres-password         
-            
             - name: SQLALCHEMY_DATABASE_URI
-              value: "postgresql://{{ .Values.postgresql.auth.username }}:$(PG_PASSWORD)@{{ .Release.Name }}-postgresql.{{ .Release.Namespace }}.svc.cluster.local/{{ .Values.postgresql.auth.database }}"
-              
+              value: "{{ .Values.env.SQLALCHEMY_DATABASE_URI }}" 
+            
             - name: SECRET_KEY
               value: "some-other-secret-key-for-flask"
 
