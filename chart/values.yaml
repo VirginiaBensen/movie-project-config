@@ -6,7 +6,6 @@ image:
 
 env:
   SQLALCHEMY_DATABASE_URI: "postgresql://postgres:1509@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
-
 service:
   type: ClusterIP
   port: 80
@@ -37,13 +36,12 @@ postgresql:
     storageClass: "gp2"
   auth:
     database: "movie_db"
-    username: "postgres"
+    username: "movie_user"
     password: "1509"
   image:
     registry: docker.io
     repository: bitnami/postgresql
-    tag: "latest"  
-
+    tag: "latest"
 serviceAccount:
   create: false
   name: ""
