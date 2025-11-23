@@ -7,7 +7,7 @@ image:
 env:
   SQLALCHEMY_DATABASE_URI: "postgresql://postgres:1509@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
 ingress:
   enabled: true
