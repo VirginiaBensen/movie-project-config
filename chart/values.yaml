@@ -4,7 +4,7 @@ image:
   pullPolicy: IfNotPresent
   tag: "63ab7d4" 
 env:
-  SQLALCHEMY_DATABASE_URI: "postgresql://postgres:FinalFix2025!@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
+  SQLALCHEMY_DATABASE_URI: "postgresql://postgres:w1zWcy9QXM@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
 service:
   type: ClusterIP 
   port: 80
@@ -49,7 +49,7 @@ postgresql:
   auth:
     database: "movie_db"
     username: "postgres"
-    password: "FinalFix2025!"
+    password: "w1zWcy9QXM"
   image:
     registry: docker.io
     repository: bitnami/postgresql
