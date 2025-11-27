@@ -38,6 +38,7 @@ postgresql:
   auth:
     database: "movie_db"
     username: "postgres"
+  # password: "1509"
   image:
     registry: docker.io
     repository: bitnami/postgresql
