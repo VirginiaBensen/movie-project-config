@@ -2,34 +2,35 @@ replicaCount: 2
 image:
   repository: 902275209269.dkr.ecr.us-east-1.amazonaws.com/movie-watchlist-backend
   pullPolicy: IfNotPresent
+<<<<<<< HEAD
   tag: "993c83b" 
+=======
+  tag: "993c83b"
+>>>>>>> 09f702a18fe1f677ab334e5be8149dc8a3b53285
 env:
   SQLALCHEMY_DATABASE_URI: "postgresql://postgres:cq1YDTlADG@movie-watchlist-postgresql.development.svc.cluster.local/movie_db"
 service:
-  type: ClusterIP 
+  type: ClusterIP
   port: 80
-
 frontend:
   replicaCount: 2
   image:
     repository: 902275209269.dkr.ecr.us-east-1.amazonaws.com/movie-watchlist-frontend
     pullPolicy: IfNotPresent
-    tag: "latest" 
+    tag: "latest"
   service:
     type: ClusterIP
     port: 80
-
 ingress:
   enabled: true
   className: "nginx"
   annotations: {}
   hosts:
-    - host: statenews.com 
+    - host: statenews.com
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls: []
-
 resources:
   limits:
     cpu: 200m
@@ -42,7 +43,6 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
-
 postgresql:
   global:
     storageClass: "gp2"
@@ -54,7 +54,6 @@ postgresql:
     registry: docker.io
     repository: bitnami/postgresql
     tag: "latest"
-
 serviceAccount:
   create: false
   name: ""
